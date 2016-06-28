@@ -1,5 +1,7 @@
 package org.openstack4j.model.network.ext;
 
+import java.util.List;
+
 import org.openstack4j.common.Buildable;
 import org.openstack4j.model.ModelEntity;
 import org.openstack4j.model.network.ext.builder.FirewallBuilder;
@@ -66,4 +68,6 @@ public interface Firewall extends ModelEntity, Buildable<FirewallBuilder> {
 	 * 				This firewall will implement the rules contained in the firewall policy represented by this uuid.
 	 */
 	public String getPolicy();
+
+	List<String> getRouterIds();
 }
