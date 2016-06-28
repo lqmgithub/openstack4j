@@ -52,5 +52,10 @@ public interface FirewallBuilder extends Builder<FirewallBuilder, Firewall> {
 	 */
 	public FirewallBuilder policy(String policyId);
 	
+	/**
+	 * @param routerIds : A list of UUIDs for routers that are associated with the firewall.
+	 * 				
+	 * @return FirewallBuilder
+	 */
 	public FirewallBuilder routerIds(List<String> routerIds);
 }

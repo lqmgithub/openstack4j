@@ -69,5 +69,10 @@ public interface Firewall extends ModelEntity, Buildable<FirewallBuilder> {
 	 */
 	public String getPolicy();
 
+	/**
+	 * 
+	 * @return List<String> : A list of UUIDs for routers that are associated with the firewall.
+	 * 				 
+	 */
 	List<String> getRouterIds();
 }
