@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.openstack4j.model.ModelEntity;
 import org.openstack4j.model.common.Link;
+import org.openstack4j.openstack.common.NameResourceEntity;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -269,5 +270,8 @@ public interface Server extends ModelEntity {
 	 * @return the administrative password to the VM
 	 */
 	String getAdminPass();
+	
+	
+	List<NameResourceEntity> getSecurityGroups();
 
 }

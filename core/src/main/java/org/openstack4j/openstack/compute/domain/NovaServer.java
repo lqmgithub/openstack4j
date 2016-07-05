@@ -17,6 +17,7 @@ import org.openstack4j.model.compute.Server;
 import org.openstack4j.openstack.common.GenericLink;
 import org.openstack4j.openstack.common.IdResourceEntity;
 import org.openstack4j.openstack.common.ListResult;
+import org.openstack4j.openstack.common.NameResourceEntity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -81,7 +82,11 @@ public class NovaServer implements Server {
 	private List<IdResourceEntity> osExtendedVolumesAttached;
 	private String uuid;
 	private String adminPass;
-
+	
+	@JsonProperty("security_groups")
+	private List<NameResourceEntity> securityGroups;
+	
+	
 	@Override
 	public String getId() {
 		return id;
@@ -271,6 +276,11 @@ public class NovaServer implements Server {
 		return adminPass;
 	}
 	
+    @Override
+    public List<NameResourceEntity> getSecurityGroups() {
+        return securityGroups;
+    }
+	
 	@Override
 	public String toString() {
 		return Objects.toStringHelper(this).omitNullValues()
@@ -280,7 +290,7 @@ public class NovaServer implements Server {
 				   .add("launched at", launchedAt).add("tenantId", tenantId).add("hostId", hostId)
 				   .add("addresses", addresses).add("hypervisor host", hypervisorHostname)
 				   .add("uuid", uuid).add("powerstate", powerState).add("fault", fault).add("instanceName", instanceName)
-				   .add("vmState", vmState).add("metadata", metadata)
+				   .add("vmState", vmState).add("metadata", metadata).add("securityGroups", securityGroups)
 				   .toString();
 	}
 	
@@ -295,4 +305,6 @@ public class NovaServer implements Server {
 			return servers;
 		}
 	}
+
+  
 }
