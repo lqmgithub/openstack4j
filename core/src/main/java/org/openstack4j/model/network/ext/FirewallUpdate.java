@@ -1,5 +1,7 @@
 package org.openstack4j.model.network.ext;
 
+import java.util.List;
+
 import org.openstack4j.common.Buildable;
 import org.openstack4j.model.ModelEntity;
 import org.openstack4j.model.network.ext.builder.FirewallUpdateBuilder;
@@ -44,4 +46,11 @@ public interface FirewallUpdate extends ModelEntity, Buildable<FirewallUpdateBui
 	 * 				This firewall will implement the rules contained in the firewall policy represented by this uuid.
 	 */
 	public String getPolicy();
+	
+	/**
+	 * 
+	 * @return List<String> : A list of UUIDs for routers that are associated with the firewall.
+	 * 				 
+	 */
+	List<String> getRouterIds();
 }

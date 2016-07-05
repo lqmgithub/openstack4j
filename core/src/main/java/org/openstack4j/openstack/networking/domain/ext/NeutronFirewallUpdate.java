@@ -1,5 +1,7 @@
 package org.openstack4j.openstack.networking.domain.ext;
 
+import java.util.List;
+
 import org.openstack4j.model.network.ext.FirewallUpdate;
 import org.openstack4j.model.network.ext.builder.FirewallUpdateBuilder;
 
@@ -33,6 +35,9 @@ public class NeutronFirewallUpdate implements FirewallUpdate {
 	
 	@JsonProperty("firewall_policy_id")
 	private String policyId;
+	
+	@JsonProperty("router_ids")
+	private List<String> routerIds;
 	
 	/**
 	 * Wrap this Firewall to a builder
@@ -81,11 +86,16 @@ public class NeutronFirewallUpdate implements FirewallUpdate {
 	}
 	
 	@Override
+	public List<String> getRouterIds() {
+		return routerIds;
+	}
+	
+	@Override
 	public String toString() {
 		return Objects.toStringHelper(this).omitNullValues()
 				.add("name", name).add("policyId", policyId)
 				.add("shared", shared).add("adminStateUp", adminStateUp)
-				.add("tenantId", tenantId).add("description", description)
+				.add("tenantId", tenantId).add("description", description).add("routerIds", routerIds)
 				.toString();
 	}
 	
@@ -146,6 +156,14 @@ public class NeutronFirewallUpdate implements FirewallUpdate {
 			f.policyId = policyId;
 			return this;
 		}
+		
+		@Override
+		public FirewallUpdateBuilder routerIds(List<String> routerIds) {
+			f.routerIds = routerIds;
+			return this;
+		}
 	}
+
+
 
 }

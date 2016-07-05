@@ -1,5 +1,7 @@
 package org.openstack4j.model.network.ext.builder;
 
+import java.util.List;
+
 import org.openstack4j.common.Buildable.Builder;
 import org.openstack4j.model.network.ext.FirewallUpdate;
 
@@ -49,4 +51,11 @@ public interface FirewallUpdateBuilder extends Builder<FirewallUpdateBuilder, Fi
 	 * @return FirewallUpdateBuilder
 	 */
 	public FirewallUpdateBuilder policy(String policyId);
+
+	/**
+	 * @param routerIds : A list of UUIDs for routers that are associated with the firewall.
+	 * 				
+	 * @return FirewallBuilder
+	 */
+	public FirewallUpdateBuilder routerIds(List<String> routerIds);
 }
